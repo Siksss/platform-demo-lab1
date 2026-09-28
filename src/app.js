@@ -18,6 +18,16 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify({ status: "ok" }));
     return;
   }
+  if (req.url === "/version") {
+    res.writeHead(200);
+    res.end(
+      JSON.stringify({
+        service: APP_NAME,
+        version: "1.0.0",
+      }),
+    );
+    return;
+  }
   res.writeHead(404);
   res.end(JSON.stringify({ error: "not found" }));
 });
